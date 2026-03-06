@@ -1,0 +1,46 @@
+table "dev1_db"."orders" {
+  columns = (
+    column "id" {
+      type = int
+      null = NOT NULL
+    }
+    column "user_id" {
+      type = int
+    }
+    column "order_date" {
+      type = timestamp
+      default = CURRENT_TIMESTAMP
+    }
+    column "total_amount" {
+      type = decimal(10,2)
+    }
+  )
+  primaryKey = {
+    columns = [
+      id
+    ]
+    name = "PRIMARY"
+    objectType = primaryKey
+  }
+}
+
+foreignKey "dev1_db"."orders"."orders_ibfk_1" {
+  columns = [
+    "user_id"
+  ]
+  referencedTable = "dev1_db"."users"
+  referencedColumns = [
+    "id"
+  ]
+}
+
+index "dev1_db"."orders"."user_id" {
+  columns = <
+    {
+      name = user_id
+    }
+
+  >
+  type = BTREE
+}
+

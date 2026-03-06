@@ -1,0 +1,38 @@
+table "dev1_db"."users" {
+  columns = (
+    column "id" {
+      type = int
+      null = NOT NULL
+    }
+    column "username" {
+      type = varchar(50)
+      null = NOT NULL
+    }
+    column "created_at" {
+      type = timestamp
+      default = CURRENT_TIMESTAMP
+    }
+    column "phone" {
+      type = varchar(20)
+    }
+  )
+  primaryKey = {
+    columns = [
+      id
+    ]
+    name = "PRIMARY"
+    objectType = primaryKey
+  }
+}
+
+index "dev1_db"."users"."username" {
+  columns = <
+    {
+      name = username
+    }
+
+  >
+  type = BTREE
+  unique = UNIQUE
+}
+

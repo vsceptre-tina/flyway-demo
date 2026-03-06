@@ -1,0 +1,28 @@
+table "dev1_db"."products" {
+  columns = (
+    column "id" {
+      type = int
+      null = NOT NULL
+    }
+    column "product_name" {
+      type = varchar(100)
+      null = NOT NULL
+    }
+    column "price" {
+      type = decimal(10,2)
+      null = NOT NULL
+    }
+    column "created_at" {
+      type = timestamp
+      default = CURRENT_TIMESTAMP
+    }
+  )
+  primaryKey = {
+    columns = [
+      id
+    ]
+    name = "PRIMARY"
+    objectType = primaryKey
+  }
+}
+

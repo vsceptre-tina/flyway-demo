@@ -1,0 +1,44 @@
+databaseType = "MySql"
+id = "7d5f586d-845e-4d39-9d8d-44739d86b6e4"
+name = "flyway-enter-1"
+
+[flyway]
+callbackLocations = [ "filesystem:callbacks" ]
+locations = [ "filesystem:migrations" ]
+mixed = true
+outOfOrder = true
+schemaModelLocation = "schema-model"
+validateMigrationNaming = true
+baselineVersion = "001_20260306121139"
+baselineOnMigrate = true
+
+  [flyway.check]
+  majorTolerance = 0
+
+[flywayDesktop]
+developmentEnvironment = "development"
+shadowEnvironment = "shadow"
+
+  [flywayDesktop.generate]
+  undoScripts = true
+
+[redgateCompare]
+filterFile = "filter.rgf"
+
+[redgateCompare.mysql.options.ignores]
+ignoreNewlinesInTextObjects = "off"
+
+[environments.Prod]
+url = "jdbc:mysql://localhost:3306/prod_db"
+schemas = [ "prod_db" ]
+displayName = "Prod"
+
+[environments.Dev1_deploy]
+url = "jdbc:mysql://localhost:3306/dev1_db"
+schemas = [ "dev1_db" ]
+displayName = "Dev1_deploy"
+
+[environments.target-dev1]
+url = "jdbc:mysql://localhost:3306/dev1_db"
+schemas = [ "dev1_db" ]
+displayName = "target-dev1"
