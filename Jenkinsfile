@@ -16,7 +16,7 @@ pipeline {
                         docker run --platform linux/amd64 --rm \
                             -v ${WORKSPACE}:/flyway/project \
                             redgate/flyway \
-                            flyway -url=${DEV_DB_URL} \
+                            -url=${DEV_DB_URL} \
                                    -user=${DB_USER} \
                                    -password=${DB_PASSWORD} \
                                    -locations=filesystem:${MIGRATION_LOC} \
@@ -32,7 +32,7 @@ pipeline {
                         docker run --platform linux/amd64 --rm \
                             -v ${WORKSPACE}:/flyway/project \
                             redgate/flyway \
-                            flyway -url=${DEV_DB_URL} \
+                            -url=${DEV_DB_URL} \
                                    -user=${DB_USER} \
                                    -password=${DB_PASSWORD} \
                                    -locations=filesystem:${MIGRATION_LOC} \
@@ -48,7 +48,7 @@ pipeline {
                         docker run --platform linux/amd64 --rm \
                             -v ${WORKSPACE}:/flyway/project \
                             redgate/flyway \
-                            flyway -url=${PROD_DB_URL} \
+                            -url=${PROD_DB_URL} \
                                    -user=${DB_USER} \
                                    -password=${DB_PASSWORD} \
                                    -locations=filesystem:${MIGRATION_LOC} \
@@ -73,7 +73,7 @@ pipeline {
                         docker run --platform linux/amd64 --rm \
                             -v ${WORKSPACE}:/flyway/project \
                             redgate/flyway \
-                            flyway -url=${PROD_DB_URL} \
+                            -url=${PROD_DB_URL} \
                                    -user=${DB_USER} \
                                    -password=${DB_PASSWORD} \
                                    -locations=filesystem:${MIGRATION_LOC} \
