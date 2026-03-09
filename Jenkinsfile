@@ -41,27 +41,27 @@ pipeline {
                 }
             }
         }
-        stage('Generate Change Report (Optional)') {
-            steps {
-                script {
-                    sh """
-                        docker run --platform linux/amd64 --rm \
-                            -v ${WORKSPACE}:/flyway/project \
-                            redgate/flyway \
-                            -url=${PROD_DB_URL} \
-                                   -user=${DB_USER} \
-                                   -password=${DB_PASSWORD} \
-                                   -locations=filesystem:${MIGRATION_LOC} \
-                                   prepare -outputType=html > change_report.html
-                    """
-                }
-            }
-            post {
-                always {
-                    archiveArtifacts artifacts: 'change_report.html', allowEmptyArchive: true
-                }
-            }
-        }
+//        stage('Generate Change Report (Optional)') {
+ //           steps {
+  //              script {
+   //                 sh """
+    //                    docker run --platform linux/amd64 --rm \
+     //                       -v ${WORKSPACE}:/flyway/project \
+      //                      redgate/flyway \
+       //                     -url=${PROD_DB_URL} \
+        //                           -user=${DB_USER} \
+         //                          -password=${DB_PASSWORD} \
+          //                         -locations=filesystem:${MIGRATION_LOC} \
+           //                        prepare -outputType=html > change_report.html
+            //        """
+             //   }
+            //}
+            //post {
+             //   always {
+              //      archiveArtifacts artifacts: 'change_report.html', allowEmptyArchive: true
+               // }
+            //}
+        //}
         stage('Deploy to Production (Manual Approval)') {
             input {
                 message "批准部署到生产环境？"
